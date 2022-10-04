@@ -4,9 +4,9 @@ import configparser
 import pandas as pd
 from tweepy import OAuthHandler
 
-#read config
 
 config = configparser.ConfigParser()
+#設定ファイル読み込む
 config.read('config.ini')
 
 api_key = config['twitter']['api_key']
@@ -19,21 +19,19 @@ auth = OAuthHandler(api_key,api_key_secret)
 auth.set_access_token(access_token,access_token_secret)
 
 
-api = tweepy.API(auth, wait_on_rate_limit=True)    # set wait_on_rate_limit =True; as twitter may block you from querying if it finds you exceeding some limits
+api = tweepy.API(auth, wait_on_rate_limit=True)    
 
-
-
-search_words = ["コロナ until:2022-09-10 since:2022-09-01"]
+#キーワード設定
+search_words = ["コロナ  min_faves:100 until:2022-09-27 since:2022-09-20"]
 
 
 
 tweets = tweepy.Cursor(api.search_tweets,q=search_words,
-                       #geocode="35.68046,139.68875,3000km",
-                       ).items(10)
-## the geocode is for India; format for geocode="lattitude,longitude,radius"
-## radius should be in miles or km
+                        #どこからツイットを得るか
+                       geocode="35.68046,139.68875,3000km",
+                       ).items(10) #何件までを得るか？
 
-print(tweets)
+#print(tweets)
 
 columns = ['Time', 'User', 'Tweet']
 data = []
@@ -44,7 +42,7 @@ for tweet in tweets:
 df = pd.DataFrame(data, columns=columns)
 
 
-
+#ファイル名設定
 df.to_csv('tweets2.csv')
 
 
