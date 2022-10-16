@@ -15,7 +15,7 @@
 5. On your terminal/command line type
     - conda activate  -->
 
-## 前提条件
+# 前提条件
 
 0. 動画で確認 [HERE]()
 1. Anaconda をダウンロード [Anaconda Site](https://www.anaconda.com/products/distribution)
@@ -24,11 +24,26 @@
     - conda create -n twitter-api-test
 4. Twitter API key を取得 [リンク](https://developer.twitter.com/en/portal/dashboard)
 
-## セットアップ 
+# セットアップ 
 
-2. Git リポジトリのダウンロードもしくはGit cloneでファイルをダウンロード
-3. config.iniファイルをYOUR FIELDのapiに変更
+2. Git リポジトリのダウンロードもしくはgit cloneでファイルをダウンロード
+3. `config.ini`をYOUR FIELDのapiに変更
 4. コマンドライン上でダウンロードしたフォルダを開く
 5. コマンドライン上で以下を実行
-    - conda activate twitter-api-test
-    - pip install tweepy pandas configparser
+    - ``` conda activate twitter-api-test ```
+    - ``` pip install tweepy pandas configparser ```
+
+# pythonファイルのメンテ
+
+## 設定ファイル
+1. `config_template.txt`をコピーしてconfig.iniを作成
+2. `config.ini`に取得したtwitterAPIのAPIkey情報を入力
+
+## キーワード設定
+* リスト ```search_words```の要素を追加、削除することで検索キーワードを変更できる  
+検索キーワードのフォーマット  
+　 ``` [キーワード] min_faves:[最小いいね数] until:[検索終了日] since:[検索開始日]  ```  
+　例：```コロナ min_faves:100 until:2022-9-27 since:2022-09-20```
+
+## 保存ファイル名設定
+* 変数```file```の文字列を変更することで保存するファイル名を変更できる
