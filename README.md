@@ -21,7 +21,7 @@
 1. Anaconda をダウンロード [Anaconda Site](https://www.anaconda.com/products/distribution)
 2. Anacanda をインストール  (環境変数の追加を忘れないでください)
 3. Anaconda Prompt を開き、Anaconda Environmentを作成
-    - conda env create -f environment.yml
+    - conda create -n twitter-api-test
 4. Twitter API key を取得 [リンク](https://developer.twitter.com/en/portal/dashboard)
 
 ## セットアップ 
@@ -30,4 +30,5 @@
 3. config.iniファイルをYOUR FIELDのapiに変更
 4. コマンドライン上でダウンロードしたフォルダを開く
 5. コマンドライン上で以下を実行
-    - conda activate 
+    - conda activate twitter-api-test
+    - pip install tweepy pandas configparser
