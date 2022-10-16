@@ -3,7 +3,7 @@ import tweepy
 import configparser
 import pandas as pd
 from tweepy import OAuthHandler
-
+import time
 
 config = configparser.ConfigParser()
 #設定ファイル読み込む
@@ -41,9 +41,16 @@ for tweet in tweets:
 
 df = pd.DataFrame(data, columns=columns)
 
+# 現在の日時を取得
+now = time.localtime()
+date = time.strftime('%Y%m%d%H%M%S', now)
 
 #ファイル名設定
-df.to_csv('tweets2.csv')
+file = 'tweets_'
+extension = '.csv'
+name = file + date + extension
+
+df.to_csv(name)
 
 
 
