@@ -19,7 +19,7 @@ auth = OAuthHandler(api_key,api_key_secret)
 auth.set_access_token(access_token,access_token_secret)
 
 
-api = tweepy.API(auth, wait_on_rate_limit=True)    
+api = tweepy.API(auth, wait_on_rate_limit=True,wait_on_rate_limit_notify=True)    
 
 #キーワード設定
 search_words = ["コロナ  min_faves:100 until:2022-09-27 since:2022-09-20"]
